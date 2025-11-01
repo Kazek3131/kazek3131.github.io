@@ -1,95 +1,160 @@
-<html lang="pl"><head><link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiIiwic2hvcnRfbmFtZSI6IiIsInRoZW1lX2NvbG9yIjoiIzEwMTMxNyIsImJhY2tncm91bmRfY29sb3IiOiIjMTAxMzE3IiwiZGlzcGxheSI6InN0YW5kYWxvbmUifQ==">
-    <title>mObywatel</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="assets/app/main.css">
-    <link rel="stylesheet" href="assets/app/card.css">
-    <link rel="icon" type="image/x-icon" href="assets/app/logo.png">
-    <link rel="apple-touch-icon" href="assets/app/logo.png">
-    <link rel="shortcut icon" href="assets/app/logo.png">
-  <link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><style lang="en" type="text/css" id="dark-mode-native-sheet"></style><style>:is([id*='google_ads_iframe'],[id*='taboola-'],.taboolaHeight,.taboola-placeholder,#top-ad,#credential_picker_container,#credentials-picker-container,#credential_picker_iframe,[id*='google-one-tap-iframe'],#google-one-tap-popup-container,.google-one-tap__module,.google-one-tap-modal-div,#amp_floatingAdDiv,#ez-content-blocker-container) {display:none!important;min-height:0!important;height:0!important;}</style></head>
-  <body>
-    
-    <div class="top_grid_fixed">
-      <div class="action_grid_fixed">
-        <img src="assets/app/images/back_blue.png" class="back_img_fixed" alt="">
-        <p onclick="sendTo('documents.html')" class="back_text_fixed">Wróć</p>
-      </div>
-      <p class="title_text_fixed">mDowód</p>
-      <img src="assets/app/images/help.png" class="help_img_fixed" alt="">
+<html lang="pl">
+<head>
+  <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiIiwic2hvcnRfbmFtZSI6IiIsInRoZW1lX2NvbG9yIjoiIzEwMTMxNyIsImJhY2tncm91bmRfY29sb3IiOiIjMTAxMzE3IiwiZGlzcGxheSI6InN0YW5kYWxvbmUifQ==">
+  <title>mObywatel</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="assets/app/main.css">
+  <link rel="stylesheet" href="assets/app/card.css">
+  <link rel="icon" type="image/x-icon" href="assets/app/logo.png">
+  <link rel="apple-touch-icon" href="assets/app/logo.png">
+  <link rel="shortcut icon" href="assets/app/logo.png">
+
+  <!-- 👇 Zmieniony styl – mniejszy, realistyczny jak w dowodzie -->
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  body, .container, .id_wrapper, .id_image_data, .id_data_grid,
+  .data_title, .data_value, .box_top, .box_value, .bottom_text,
+  .under_text, .additional_title, .additional_subtitle {
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Imię, nazwisko */
+  .data_title {
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.05;
+    letter-spacing: 0.2px;
+  }
+
+  /* Opisy pod polami */
+  .data_value {
+    font-weight: 400;
+    font-size: 12px;
+    opacity: 0.9;
+    margin-top: 1px;
+  }
+
+  /* Sekcje dodatkowe (Imię ojca, matki, itd.) */
+  .box_top {
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .box_value {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .under_text, .bottom_text, .additional_title {
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .additional_subtitle {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  /* PESEL / Numery */
+  .data_title.pesel_value, .box_value.box_highlight {
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 480px) {
+    .data_title { font-size: 15px; }
+    .box_value { font-size: 13px; }
+  }
+  </style>
+  <!-- 👆 Koniec zmienionego stylu -->
+</head>
+
+<body>
+  <div class="top_grid_fixed">
+    <div class="action_grid_fixed">
+      <img src="assets/app/images/back_blue.png" class="back_img_fixed" alt="">
+      <p onclick="sendTo('documents.html')" class="back_text_fixed">Wróć</p>
     </div>
-  
-    <div class="bottom_bar">
-      <div class="bottom_bar_grid">
-        <div class="bottom_element_grid" send="documents.html">
-          <div class="bottom_element_image documents_open"></div>
-          <p class="bottom_element_text open">Dokumenty</p>
-        </div>
-        <div class="bottom_element_grid" send="services.html">
-          <div class="bottom_element_image services"></div>
-          <p class="bottom_element_text">Usługi</p>
-        </div>
-        <div class="bottom_element_grid" send="qr.html">
-          <div class="bottom_element_image qr"></div>
-          <p class="bottom_element_text">Kod QR</p>
-        </div>
-        <div class="bottom_element_grid" send="more.html">
-          <div class="bottom_element_image more"></div>
-          <p class="bottom_element_text">Więcej</p>
-        </div>
+    <p class="title_text_fixed">mDowód</p>
+    <img src="assets/app/images/help.png" class="help_img_fixed" alt="">
+  </div>
+
+  <div class="bottom_bar">
+    <div class="bottom_bar_grid">
+      <div class="bottom_element_grid" send="documents.html">
+        <div class="bottom_element_image documents_open"></div>
+        <p class="bottom_element_text open">Dokumenty</p>
+      </div>
+      <div class="bottom_element_grid" send="services.html">
+        <div class="bottom_element_image services"></div>
+        <p class="bottom_element_text">Usługi</p>
+      </div>
+      <div class="bottom_element_grid" send="qr.html">
+        <div class="bottom_element_image qr"></div>
+        <p class="bottom_element_text">Kod QR</p>
+      </div>
+      <div class="bottom_element_grid" send="more.html">
+        <div class="bottom_element_image more"></div>
+        <p class="bottom_element_text">Więcej</p>
       </div>
     </div>
-  
-    <div class="container">
-      <p class="time_text" id="time">Czas: 01:28:22 27.10.2025</p>
-  
-      <div class="id_wrapper">
-        <div class="id_image_data">
-          <img draggable="false" class="id_image" src="assets/app/images/plate.png" alt="">
-          <div class="inset"></div>
-  
-          <div class="id_own_image" id="userPhoto" style="background-image:url('assets/app/images/blank.png');"></div>
-  
-          <img draggable="false" src="assets/app/images/flag.webp" class="flag_video" alt="">
-          <img draggable="false" src="assets/app/images/eagle.png" class="eagle_video" alt="">
-          <p class="eagle_text">Rzeczpospolita<br>Polska</p>
-  
-<div class="id_data_grid">
-  <div class="data_holder">
-    <p class="data_title firstname" id="name">MICHAŁ</p>
-    <p class="data_value">Imię (imiona)</p>
   </div>
-  <div class="data_holder">
-    <p class="data_title surname" id="surname">JASTRZĄB</p>
-    <p class="data_value">Nazwisko</p>
-  </div>
-  <div class="data_holder">
-    <p class="data_title" id="nationality">POLSKIE</p>
-    <p class="data_value">Obywatelstwo</p>
-  </div>
-  <div class="data_holder">
-    <p class="data_title" id="birthday">07.08.2007</p>
-    <p class="data_value">Data urodzenia</p>
-  </div>
-  <div class="data_holder">
-    <p class="data_title" id="pesel_value">07280852198</p>
-    <p class="data_value">Numer PESEL</p>
-  </div>
-</div>
+
+  <div class="container">
+    <p class="time_text" id="time">Czas: 01:28:22 27.10.2025</p>
+
+    <div class="id_wrapper">
+      <div class="id_image_data">
+        <img draggable="false" class="id_image" src="assets/app/images/plate.png" alt="">
+        <div class="inset"></div>
+
+        <div class="id_own_image" id="userPhoto" style="background-image:url('assets/app/images/blank.png');"></div>
+
+        <img draggable="false" src="assets/app/images/flag.webp" class="flag_video" alt="">
+        <img draggable="false" src="assets/app/images/eagle.png" class="eagle_video" alt="">
+        <p class="eagle_text">Rzeczpospolita<br>Polska</p>
+
+        <div class="id_data_grid">
+          <div class="data_holder">
+            <p class="data_title firstname" id="name">MICHAŁ</p>
+            <p class="data_value">Imię (imiona)</p>
+          </div>
+          <div class="data_holder">
+            <p class="data_title surname" id="surname">JASTRZĄB</p>
+            <p class="data_value">Nazwisko</p>
+          </div>
+          <div class="data_holder">
+            <p class="data_title" id="nationality">POLSKIE</p>
+            <p class="data_value">Obywatelstwo</p>
+          </div>
+          <div class="data_holder">
+            <p class="data_title" id="birthday">07.08.2007</p>
+            <p class="data_value">Data urodzenia</p>
+          </div>
+          <div class="data_holder">
+            <p class="data_title" id="pesel_value">07280852198</p>
+            <p class="data_value">Numer PESEL</p>
+          </div>
+        </div>
 
         <div class="id_bottom">
           <div class="bottom_grid">
             <img class="bottom_image" src="assets/app/images/valid.png" alt="">
-            <p class="bottom_text" style="color:#16be2d;font-weight:600;font-size:16px;margin-left:15px;">Dokument ważny</p>
+            <p class="bottom_text" style="color:#16be2d;font-weight:600;font-size:14px;margin-left:15px;">Dokument ważny</p>
           </div>
         </div>
       </div>
-  
+
       <div class="under_container">
         <div class="under_grid">
           <div class="under_icon" onclick="sendTo('scan.html', 'card.html')">
@@ -118,89 +183,83 @@
           </div>
         </div>
       </div>
-  
+
       <div class="confirm_info">
         <div class="confirm_box">
           <p class="box_top">Seria i numer mDowodu</p>
           <p class="box_value box_highlight" id="seriesAndNumber">OOGT 55115</p>
           <button class="main_button_filled" onclick="navigator.clipboard.writeText(document.getElementById('seriesAndNumber').textContent)">Kopiuj</button>
           <p class="box_description">Dane mDowodu i dowodu osobistego są inne - to dwa różne dokumenty.</p>
-</div>
-<div class="confirm_box">
-  <p class="box_top">Imię ojca</p>
-  <p class="box_value" id="fathersName">JACEK</p>
-</div>
-<div class="confirm_box" style="border:none;">
-  <p class="box_top">Imię matki</p>
-  <p class="box_value" id="mothersName">MARTA</p>
-</div>
-</div>
+        </div>
+        <div class="confirm_box">
+          <p class="box_top">Imię ojca</p>
+          <p class="box_value" id="fathersName">JACEK</p>
+        </div>
+        <div class="confirm_box" style="border:none;">
+          <p class="box_top">Imię matki</p>
+          <p class="box_value" id="mothersName">MARTA</p>
+        </div>
+      </div>
 
-<div class="other_grid">
-  <div class="bottom_holder info_holder">
-    <div class="bottom_grid">
-      <p class="bottom_text" style="margin-left:0px;">Twoje dodatkowe dane</p>
-    </div>
-    <img class="action_arrow" src="assets/app/images/arrow_white.png" alt="">
-    <div class="additional_holder">
-      <div class="additional_grid">
-        <p class="additional_title">Nazwisko rodowe</p>
-        <p class="additional_subtitle" id="familyName">JASTRZĄB</p>
-      </div>
-      <div class="additional_grid">
-        <p class="additional_title">Płeć</p>
-        <p class="additional_subtitle" id="sex">Mężczyzna</p>
-      </div>
-      <div class="additional_grid">
-        <p class="additional_title">Nazwisko rodowe ojca</p>
-        <p class="additional_subtitle" id="fathersFamilyName">JASTRZĄB</p>
-      </div>
-      <div class="additional_grid">
-        <p class="additional_title">Nazwisko rodowe matki</p>
-        <p class="additional_subtitle" id="mothersFamilyName">MAZUR</p>
-      </div>
-      <div class="additional_grid">
-        <p class="additional_title">Miejsce urodzenia</p>
-        <p class="additional_subtitle" id="birthPlace">PŁOCK</p>
-      </div>
-      <div class="additional_grid">
-        <p class="additional_title">Kraj urodzenia</p>
-        <p class="additional_subtitle" id="countryOfBirth">POLSKA</p>
-      </div>
-      <div class="additional_grid">
-        <p class="additional_title">Adres zameldowania na pobyt stały</p>
-        <p class="additional_subtitle" id="adress">JANA PAWŁA 14<br>09-410 PŁOCK</p>
-      </div>
-      <div class="additional_grid" style="border-bottom:none;margin-bottom:0px;">
-        <p class="additional_title">Data zameldowania na pobyt stały</p>
-        <p class="additional_subtitle home_date">24.11.2013</p>
-      </div>
-    </div>
-  </div>
-</div>
-  
-        <div class="bottom_holder" style="height:95px;margin-bottom:130px;">
-          <div class="bottom_update">
-            <div class="bottom_update_grid">
-              <p class="bottom_update_text" style="margin-left:0px;">Ostatnia aktualizacja</p>
-              <p class="bottom_update_value" style="margin-left:0px;">24.12.2024</p>
+      <div class="other_grid">
+        <div class="bottom_holder info_holder">
+          <div class="bottom_grid">
+            <p class="bottom_text" style="margin-left:0px;">Twoje dodatkowe dane</p>
+          </div>
+          <img class="action_arrow" src="assets/app/images/arrow_white.png" alt="">
+          <div class="additional_holder">
+            <div class="additional_grid">
+              <p class="additional_title">Nazwisko rodowe</p>
+              <p class="additional_subtitle" id="familyName">JASTRZĄB</p>
             </div>
-            <button class="main_button_filled update" style="right:20px;" onclick="location.reload()">Aktualizuj</button>
+            <div class="additional_grid">
+              <p class="additional_title">Płeć</p>
+              <p class="additional_subtitle" id="sex">Mężczyzna</p>
+            </div>
+            <div class="additional_grid">
+              <p class="additional_title">Nazwisko rodowe ojca</p>
+              <p class="additional_subtitle" id="fathersFamilyName">JASTRZĄB</p>
+            </div>
+            <div class="additional_grid">
+              <p class="additional_title">Nazwisko rodowe matki</p>
+              <p class="additional_subtitle" id="mothersFamilyName">MAZUR</p>
+            </div>
+            <div class="additional_grid">
+              <p class="additional_title">Miejsce urodzenia</p>
+              <p class="additional_subtitle" id="birthPlace">PŁOCK</p>
+            </div>
+            <div class="additional_grid">
+              <p class="additional_title">Kraj urodzenia</p>
+              <p class="additional_subtitle" id="countryOfBirth">POLSKA</p>
+            </div>
+            <div class="additional_grid">
+              <p class="additional_title">Adres zameldowania na pobyt stały</p>
+              <p class="additional_subtitle" id="adress">JANA PAWŁA 14<br>09-410 PŁOCK</p>
+            </div>
+            <div class="additional_grid" style="border-bottom:none;margin-bottom:0px;">
+              <p class="additional_title">Data zameldowania na pobyt stały</p>
+              <p class="additional_subtitle home_date">24.11.2013</p>
+            </div>
           </div>
         </div>
       </div>
+
+      <div class="bottom_holder" style="height:95px;margin-bottom:130px;">
+        <div class="bottom_update">
+          <div class="bottom_update_grid">
+            <p class="bottom_update_text" style="margin-left:0px;">Ostatnia aktualizacja</p>
+            <p class="bottom_update_value" style="margin-left:0px;">24.12.2024</p>
+          </div>
+          <button class="main_button_filled update" style="right:20px;" onclick="location.reload()">Aktualizuj</button>
+        </div>
+      </div>
     </div>
-  
-    <script src="assets/app/encode.js"></script>
-    <script src="assets/app/bar.js"></script>
-    <script src="assets/app/manifest.js"></script>
-    <script src="assets/app/cache.js"></script>
-    <script src="assets/app/card.js"></script>
-  
-    <script>
- 
+  </div>
 
-
-  </body></html>
-
-
+  <script src="assets/app/encode.js"></script>
+  <script src="assets/app/bar.js"></script>
+  <script src="assets/app/card.js"></script>
+  <script src="assets/app/manifest.js"></script>
+  <script src="assets/app/cache.js"></script>
+</body>
+</html>
