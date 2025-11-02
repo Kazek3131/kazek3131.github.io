@@ -1,20 +1,58 @@
-<!DOCTYPE html> <html lang="pl"> <head> <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiIiwic2hvcnRfbmFtZSI6IiIsInRoZW1lX2NvbG9yIjoiIzEwMTMxNyIsImJhY2tncm91bmRfY29sb3IiOiIjMTAxMzE3IiwiZGlzcGxheSI6InN0YW5kYWxvbmUifQ==" /> <title>mObywatel</title> <meta charset="UTF-8" /> <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /> <meta http-equiv="Pragma" content="no-cache" /> <meta http-equiv="Expires" content="0" /> <meta name="format-detection" content="telephone=no" /> <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" /> <meta name="mobile-web-app-capable" content="yes" /> <link rel="stylesheet" href="assets/app/main.css" /> <link rel="stylesheet" href="assets/app/card.css" /> <link rel="icon" type="image/x-icon" href="assets/app/logo.png" /> <link rel="apple-touch-icon" href="assets/app/logo.png" /> <link rel="shortcut icon" href="assets/app/logo.png" /> <!-- Styl dopasowany do dowodnowy.html --> <style> @import url("https://fonts.googleapis.com/css2?family=Inter:wght@700;900&display=swap"); /* Dane główne jak w dowodnowy.html */ #name, #surname, #nationality, #birthday, #pesel_value { font-family: "Inter", sans-serif; font-weight: 700; text-transform: uppercase; margin: 0; color: #000; letter-spacing: 0.4px; line-height: 1; } /* Imię i nazwisko większe */ #name, #surname { font-size: 18px; } /* Pozostałe dane (obywatelstwo, data, pesel) nieco mniejsze */ #nationality, #birthday, #pesel_value { font-size: 17px; }  
-href="data:application/manifest+json;base64,eyJuYW1lIjoiIiwic2hvcnRfbmFtZSI6IiIsInRoZW1lX2NvbG9yIjoiIzEwMTMxNyIsImJhY2tncm91bmRfY29sb3IiOiIjMTAxMzE3IiwiZGlzcGxheSI6InN0YW5kYWxvbmUifQ==">
-    <title>mObywatel</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="assets/app/main.css">
-    <link rel="stylesheet" href="assets/app/card.css">
-    <link rel="icon" type="image/x-icon" href="assets/app/logo.png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="shortcut icon" href="assets/app/logo.png">
-  <link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><style lang="en" type="text/css" id="dark-mode-native-sheet"></style><style>:is([id*='google_ads_iframe'],[id*='taboola-'],.taboolaHeight,.taboola-placeholder,#top-ad,#credential_picker_container,#credentials-picker-container,#credential_picker_iframe,[id*='google-one-tap-iframe'],#google-one-tap-popup-container,.google-one-tap__module,.google-one-tap-modal-div,#amp_floatingAdDiv,#ez-content-blocker-container) {display:none!important;min-height:0!important;height:0!important;}</style></head>
-  <body>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  
+  <title>mObywatel</title>
+
+  <!-- Manifest (jeśli potrzebny dla PWA) -->
+  <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiIiwic2hvcnRfbmFtZSI6IiIsInRoZW1lX2NvbG9yIjoiIzEwMTMxNyIsImJhY2tncm91bmRfY29sb3IiOiIjMTAxMzE3IiwiZGlzcGxheSI6InN0YW5kYWxvbmUifQ==">
+
+  <!-- Ikony -->
+  <link rel="icon" type="image/png" href="assets/app/images/logo.png">
+  <link rel="shortcut icon" href="assets/app/images/logo.png">
+  <link rel="apple-touch-icon" href="assets/app/images/logo.png">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="assets/app/main.css">
+  <link rel="stylesheet" href="assets/app/card.css">
+
+  <!-- Font i style lokalne -->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@700;900&display=swap");
+    
+    #name, #surname, #nationality, #birthday, #pesel_value {
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0;
+      color: #000;
+      letter-spacing: 0.4px;
+      line-height: 1;
+    }
+
+    #name, #surname { font-size: 18px; }
+    #nationality, #birthday, #pesel_value { font-size: 17px; }
+  </style>
+</head>
+
+<body>
+  <!-- przykładowa zawartość -->
+  <div id="card">
+    <h1 id="name">Jan</h1>
+    <h1 id="surname">Kowalski</h1>
+    <p id="nationality">POLSKA</p>
+    <p id="birthday">01.01.1990</p>
+    <p id="pesel_value">90010112345</p>
+  </div>
+</body>
+
     
     <div class="top_grid_fixed">
       <div class="action_grid_fixed">
@@ -203,6 +241,7 @@ href="data:application/manifest+json;base64,eyJuYW1lIjoiIiwic2hvcnRfbmFtZSI6IiIs
 
 
   </body></html>
+
 
 
 
